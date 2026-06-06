@@ -2,14 +2,23 @@
 
 Kavach is a proactive, camera-integrated computer vision and cryptographic framework designed to secure digital images at the point of capture, protecting individuals from unauthorized AI edits, deepfakes, and privacy violations.
 
-##  Phase 1: Completed
-Built as a working proof-of-concept, this prototype demonstrates a multi-layered verification engine:
-1. **RGB Matrix Extraction:** Reads raw color data across image channels using OpenCV.
-2. **Structural Layout Analysis:** Processes structural pixel arrangements into stable byte streams to isolate physical scaling, cropping, or resizing modifications.
-3. **Laplacian Noise Filter:** Extracts high-frequency camera sensor noise grain to detect if an image is an original capture or a screenshot copy.
-4. **Cryptographic Salting & Hashing:** Combines the visual arrays with an unpredictable 16-byte random salt to generate an irreversible, patternless 64-character master **Kavach UID** via SHA-256.
+##  The Finish-Up-A-Thon Evolution: Old vs. New
 
-##  Tech Stack
+This repository represents a high-speed sprint to transform a theoretical research concept into a live, executing software prototype. 
+
+>  **Developer Context:** As a 20-year-old student currently utilizing the summer break before university admissions officially begin for my first year of college, this project marks my very first practical experience working with GitHub. Because I do not currently own a laptop, I had to learn version control, navigate coding environments, and build these low-level computer vision pipelines under highly constrained device access.
+
+###  The Old Version (The Idea)
+Originally, **Kavach** existed only as a theoretical architectural design paper (`kavach_2.pdf`). 
+- It outlined a conceptual vision for a multi-layered image validation system using RGB, pixel matrices, and sensor noise to prevent digital tampering and unauthorized image distribution.
+- No functional codebase, automation, or live validation engine existed.
+
+###  The New Version (The Working Prototype)
+During the hackathon, the entire core data pipeline was successfully brought to life in Python:
+- **`Kavach_core.py`:** A fully operational backend engine that utilizes OpenCV and NumPy to ingest raw portrait images, extract RGB arrays, map structural layouts, isolate physical camera sensor grain via a Laplacian filter, and securely hash the unified payload with a 16-byte random salt using SHA-256.
+- **`kavach_verify.py`:** A functional testing engine that evaluates original master files against modified assets or screenshot copies—calculating mathematical matrix differences (`cv2.absdiff`) and triggering automated structural layout or pixel manipulation alerts in the terminal.
+
+## Tech Stack
 - Python 3
 - OpenCV (`cv2`)
 - NumPy
